@@ -28,19 +28,26 @@ public class UserServiceTest {
         //when
         userService.create("John", "john@email.com", 29);
         //then
-        verify(userRepository, times(1)).save(new User("John", "john@email.com", 29));
+        verify(userRepository, times(1))
+            .save(new User("John", "john@email.com", 29));
     }
 
     @Test
     public void shouldFindAUser() {
         //given
-        when(userRepository.findByEmail(anyString())).thenReturn(Optional.of(new User("john", "john@email.com", 29)));
+        Optional<User> maybeJohn = Optional.of(john());
+        when(userRepository.findByEmail(anyString()))
+            .thenReturn(maybeJohn);
 
         //when
         Optional<User> maybeUser = userService.findByEmail("john@email.com");
 
         //then
         assertTrue(maybeUser.isPresent());
+    }
+
+    private User john() {
+        return new User("john", "john@email.com", 29);
     }
 
 }
