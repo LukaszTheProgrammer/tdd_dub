@@ -7,8 +7,6 @@ import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 import org.junit.Test;
 
-
-
 public class WarningServiceTest {
 
     @Test

@@ -9,6 +9,6 @@ public class Polygon {
             throw new IllegalArgumentException("count should be at least 3");
         }
 
-        //this.count = count;
+        this.count = count;
     }
 }
